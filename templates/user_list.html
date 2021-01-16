@@ -7,6 +7,7 @@
             <td>Last</td>
             <td>Email</td>
             <td>&nbsp;</td>
+            <td>&nbsp;</td>
         </tr>
 
         {% for u in users %}
@@ -15,6 +16,7 @@
                 <td>{{ u.first }}</td>
                 <td>{{ u.last }}</td>
                 <td>{{ u.email }}</td>
+                <td><a href="{{ url_for('update_user', user_id=u.id) }}">Update</a></a></td>
                 <td><a href="{{ url_for('delete_user', user_id=u.id) }}">Delete</a></a></td>
             </tr>
         {% endfor %}

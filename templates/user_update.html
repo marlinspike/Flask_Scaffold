@@ -1,0 +1,14 @@
+<html>
+<body>
+<form method="post" action="update_user">
+    First Name: <input type="text" name="first" value="{{ u.first }}"/></intput><br>
+    Last Name: <input type="text" name="last" value="{{ u.last }}"/></intput><br>
+    Email: <input type="text" name="email" value="{{ u.email }}"></intput><br>
+    <input type="hidden" name="user_id" value="{{u.id}}">
+    <input type="submit" value="Update">
+
+</form>
+
+
+</body>
+</html>

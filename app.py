@@ -54,8 +54,26 @@ def list():
     users = User.query.all()
     return render_template('user_list.html', users=users)
 
+@app.route('/update_user/<user_id>', methods = ['GET', 'POST'])
+def update_user(user_id):
+    if request.method == 'GET':
+        u:User = User.query.filter_by(id = user_id).first()
+        return render_template("user_update.html", u=u)
+    else:
+        id = request.values.get("user_id")
+        first = request.values.get("first")
+        last = request.values.get("last")
+        email = request.values.get("email")
+        u:User = User.query.filter_by(id = id).first()
+        u.first = first
+        u.last = last
+        u.email = email
+        db.session.merge(u)
+        db.session.commit()
+        return redirect(url_for('list'))
+
 #Update User by QueryString
-@app.route('/update/<first>/<new_first>', methods = ['GET'])
+@app.route('/update/<first>/<new_first>', methods = ['GET', 'POST'])
 def update(first, new_first):
     u:User = User.query.filter_by(first = first).first()
     u.first = new_first
@@ -65,5 +83,5 @@ def update(first, new_first):
     username = u.first
     return f"Updated User: {username}"
 
-app.run()
+app.run(debug=True)
 
