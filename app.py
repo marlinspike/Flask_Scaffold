@@ -22,7 +22,7 @@ def index(first, last, email):
 @app.route('/create_user', methods = ['GET', 'POST'])
 def create_user():
     if request.method == 'GET':
-        return render_template("user_create.html")
+        return render_template("user/user_create.html")
     else:
         first = request.values.get("first")
         last = request.values.get("last")
@@ -30,7 +30,7 @@ def create_user():
         u = User(first = first, last = last, email = email)
         db.session.add(u)
         db.session.commit()
-        return render_template("user.html", u = u)
+        return render_template("user/user.html", u = u)
 
 
 #Delete User
@@ -45,20 +45,20 @@ def delete_user(user_id):
 @app.route('/read/<first>', methods = ['GET'])
 def find(first):
     u:User = User.query.filter_by(first = first).first()
-    return render_template('user.html', u=u)
+    return render_template('user/user.html', u=u)
     #return f"User found: {u}"
 
 #List users
 @app.route('/list')
 def list():
     users = User.query.all()
-    return render_template('user_list.html', users=users)
+    return render_template('user/user_list.html', users=users)
 
 @app.route('/update_user/<user_id>', methods = ['GET', 'POST'])
 def update_user(user_id):
     if request.method == 'GET':
         u:User = User.query.filter_by(id = user_id).first()
-        return render_template("user_update.html", u=u)
+        return render_template("user/user_update.html", u=u)
     else:
         id = request.values.get("user_id")
         first = request.values.get("first")

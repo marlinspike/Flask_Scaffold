@@ -1,5 +1,7 @@
-<html>
-<body>
+{% extends "layout.html" %}
+{% block title %}Create User{% endblock %}
+
+{% block content %}
 <form method="post" action="create_user">
     First Name: <input type="text" name="first"/></intput><br>
     Last Name: <input type="text" name="last"/></intput><br>
@@ -8,7 +10,7 @@
     <input type="submit" value="Submit">
 
 </form>
+<p>&nbsp;</p>
+<a href ="{{ url_for('list')}}">List Users</a>
 
-
-</body>
-</html>
+{% endblock %}

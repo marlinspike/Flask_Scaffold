@@ -1,14 +1,14 @@
-<html>
-<body>
+{% extends "layout.html" %}
+{% block title %}Update User: {{u.first}}{% endblock %}
+{% block content %}
+
 <form method="post" action="update_user">
     First Name: <input type="text" name="first" value="{{ u.first }}"/></intput><br>
     Last Name: <input type="text" name="last" value="{{ u.last }}"/></intput><br>
     Email: <input type="text" name="email" value="{{ u.email }}"></intput><br>
     <input type="hidden" name="user_id" value="{{u.id}}">
     <input type="submit" value="Update">
-
 </form>
-
-
-</body>
-</html>
+<p>&nbsp;</p>
+<a href ="{{ url_for('list')}}">List Users</a>
+{% endblock %}
