@@ -1,0 +1,25 @@
+<html>
+<body>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>First</td>
+            <td>Last</td>
+            <td>Email</td>
+            <td>&nbsp;</td>
+        </tr>
+
+        {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.first }}</td>
+                <td>{{ u.last }}</td>
+                <td>{{ u.email }}</td>
+                <td><a href="{{ url_for('delete_user', user_id=u.id) }}">Delete</a></a></td>
+            </tr>
+        {% endfor %}
+        
+    </table>
+
+</body>
+</html>
