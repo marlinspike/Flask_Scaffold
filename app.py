@@ -8,6 +8,7 @@ sys.path.insert(0,parentdir)
 from models import user
 from __init__ import db, app
 from models.user import User
+from models.prefs import Prefs
 
 
 #Add user by QueryString
@@ -49,6 +50,7 @@ def find(first):
     #return f"User found: {u}"
 
 #List users
+@app.route('/')
 @app.route('/list')
 def list():
     users = User.query.all()
@@ -83,5 +85,7 @@ def update(first, new_first):
     username = u.first
     return f"Updated User: {username}"
 
-app.run(debug=True)
+if __name__ == "__main__":
+   app.run(debug=True)
+
 

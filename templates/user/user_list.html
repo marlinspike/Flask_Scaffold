@@ -2,17 +2,17 @@
 {% block title %}List Users{% endblock %}
 {% block content %}
 
-    <a href="{{ url_for('create_user') }}">Create User</a>
+    <a  class="btn btn-primary" href="{{ url_for('create_user') }}">Create User</a>
 
-    <table>
-        <tr>
-            <td>Id</td>
-            <td>First</td>
-            <td>Last</td>
-            <td>Email</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
+    <table class="table table-bordered table-sm">
+        <thead class="table table-light"><tr>
+            <th>Id</th>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+        </tr></thead>
 
         {% for u in users %}
             <tr>
@@ -20,8 +20,8 @@
                 <td>{{ u.first }}</td>
                 <td>{{ u.last }}</td>
                 <td>{{ u.email }}</td>
-                <td><a href="{{ url_for('update_user', user_id=u.id) }}">Update</a></a></td>
-                <td><a href="{{ url_for('delete_user', user_id=u.id) }}">Delete</a></a></td>
+                <td><a  class="btn btn-primary" href="{{ url_for('update_user', user_id=u.id) }}">Update</a></a></td>
+                <td><a  class="btn btn-danger" href="{{ url_for('delete_user', user_id=u.id) }}">Delete</a></a></td>
             </tr>
         {% endfor %}
         
