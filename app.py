@@ -41,6 +41,7 @@ def delete_user(user_id):
     u:User = User.query.filter_by(id = user_id).first()
     db.session.delete(u)
     db.session.commit()
+    flash('User deleted successfully!')
     return redirect(url_for('list'))
 
 #Get User by First Name
