@@ -8,7 +8,7 @@ sys.path.insert(0,parentdir)
 from models import user
 from __init__ import db, app
 from models.user import User
-from models.prefs import Prefs
+from models.pref import Pref
 
 
 #Add user by QueryString

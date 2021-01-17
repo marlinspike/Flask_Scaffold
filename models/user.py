@@ -15,3 +15,4 @@ class User(db.Model):
     last = db.Column(db.String(50))
     email = db.Column(db.String(100))
     date_created = db.Column(db.DateTime, default=datetime.now)
+    prefs = db.relationship('Pref', backref='user') #Allows you to navigate from Pref -> User
