@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for, request
+from flask import Flask, redirect, render_template, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os,sys,inspect
@@ -31,6 +31,7 @@ def create_user():
         u = User(first = first, last = last, email = email)
         db.session.add(u)
         db.session.commit()
+        flash('User created successfully!')
         return render_template("user/user.html", u = u)
 
 
@@ -72,18 +73,9 @@ def update_user(user_id):
         u.email = email
         db.session.merge(u)
         db.session.commit()
+        flash("Update successful!")
         return redirect(url_for('list'))
 
-#Update User by QueryString
-@app.route('/update/<first>/<new_first>', methods = ['GET', 'POST'])
-def update(first, new_first):
-    u:User = User.query.filter_by(first = first).first()
-    u.first = new_first
-    db.session.merge(u)
-    db.session.commit()
-    u:User = User.query.filter_by(first = new_first).first()
-    username = u.first
-    return f"Updated User: {username}"
 
 if __name__ == "__main__":
    app.run(debug=True)
