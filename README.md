@@ -23,9 +23,9 @@ Install the required dependencies. You can do this via the following command whe
 
 ## Creating the database
 While the code already contains a complete DB, you can re-create it anytime. Run Python in the root directory of the app, and then run:
-`from app import db
-db.create_all()
-quit()`
+`from app import db`
+`db.create_all()`
+`quit()`
 
 That should create an **app.sqlite3** file in the root directory of your app with the models for Users and Prefs created.
 
